@@ -1,0 +1,86 @@
+#%RAML 1.0
+---
+title: ApiCalculadora
+baseUri: https://mocksvc.mulesoft.com/mocks/3f11986f-6132-41c3-a3b6-917d44cafe14 # baseUri: http://197.0.0.2:1500
+version: 1.0
+
+#Docs
+description: Api servicio de calculadora implementación con docker.
+
+/apiCalculadora:
+  /sum/*:
+    description: "Sumatoria de dos o más valores"
+    get:
+      description: "Operación de suma"
+      responses: 
+        200:
+          description: "Operación exitosa"
+          body: 
+            application/json:
+              type: string
+              example: |
+                "Resultado de la suma: {Result}"
+        400:
+          description: "Error en request"
+          body: 
+            application/json:
+              type: string
+              example: |
+                "Se ha generado un error en el Request"  
+  /rest/*:
+    description: "Resta de dos o más valores"
+    get:
+      description: "Operación de resta"
+      responses: 
+        200:
+          description: "Operación exitosa"
+          body: 
+            application/json:
+              type: string
+              example: |
+                "Resultado de la resta: {result}"
+        400:
+          description: "Error en request"
+          body: 
+            application/json:
+              type: string
+              example: |
+                "Se ha generado un error en el Request"  
+  /mul/*:
+    description: "Multiplicación de dos o más valores"
+    get:
+      description: "Operación de multiplicación"
+      responses: 
+        200:
+          description: "Operación exitosa"
+          body: 
+            application/json:
+              type: string
+              example: |
+                "Resultado de la multiplicación: {result}"
+        400:
+          description: "Error en request"
+          body: 
+            application/json:
+              type: string
+              example: |
+                "Se ha generado un error en el Request"    
+  /div/{dividendo}/{divisor}:     
+    description: "División entre dos números"
+    get:
+      description: "Operación de división"
+      responses: 
+        200:
+          description: "Operación exitosa"
+          body: 
+            application/json:
+              type: string
+              example: |
+                "Resultado de la multiplicación: {result}"
+        400:
+          description: "Error en request"
+          body: 
+            application/json:
+              type: string
+              example: |
+                "Se ha generado un error en el Request"            
