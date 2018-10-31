@@ -1,0 +1,119 @@
+swagger: "2.0"
+info:
+  description: "Api servicio de calculadora implementación con docker."
+  version: "1.0.0"
+  title: "api-calculadora"
+
+  contact:
+    email: "lu.cardenas@javeriana.edu.co"
+  license:
+    name: "MIT"
+    url: "https://opensource.org/licenses/MIT"
+host: "127.0.0.1:1500"
+basePath: "/apiCalculadora"
+tags:
+- name: "Calculadora"
+  description: "Operaciones básicas suma/resta/multiplicación/división"
+- name: "ApiRest"
+  description: "Métodos expuestos por servicio REST"
+schemes:
+- "http"
+paths:
+  /sum/*:
+    get:
+      tags:
+      - "Suma"
+      summary: "Sumatoria de dos o más valores"
+      description: ""
+      operationId: "sum"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Operación exitosa"
+          schema:
+            $ref: "#/definitions/sum"
+        400:
+          description: "Error en request"
+  /rest/*:
+    get:
+      tags:
+      - "Resta"
+      summary: "Resta de dos o más valores"
+      description: ""
+      operationId: "res"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Operación exitosa"
+          schema:
+            $ref: "#/definitions/res"          
+        400:
+          description: "Error en request"
+  /mul/*:
+    get:
+      tags:
+      - "Multiplica"
+      summary: "Multiplicación de dos o más valores"
+      description: ""
+      operationId: "mul"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Operación exitosa"
+          schema:
+            $ref: "#/definitions/mul"          
+        400:
+          description: "Error en request"       
+  /div/{dividendo}/{divisor}:
+    get:
+      tags:
+      - "Divide"
+      summary: "División entre dos números"
+      description: ""
+      operationId: "div"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "dividendo"   
+        in: "path"
+        description: "Dividendo de la operación"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "divisor"   
+        in: "path"
+        description: "Divisor de la operación"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "Operación exitosa"
+          schema:
+            $ref: "#/definitions/div"          
+        400:
+          description: "Error en request"              
+definitions:
+  sum:
+    type: "string"
+    example: "Resultado de la suma: {Result}"
+  res:
+    type: "string"
+    example: "Resultado de la resta: {result}"
+  mul:
+    type: "string"
+    example: "Resultado de la multiplicación: {result}"
+  div:
+    type: "string"
+    example: "Resultado de la división: {result}"
